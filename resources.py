@@ -32,10 +32,11 @@ class Resources:
             cost = round(average_cost * amount)
             self.res[id_][resource]['cost'] -= cost
             self.res[id_][resource]['amount'] -= amount
-            return resource, cost, amount
+            return resource, amount, cost
 
     def transfer(self, id_out, id_in, resource, amount):
-        pass
+        data = self.remove_resources(id_out, resource, amount)
+        self.add_resources(id_in, data[0], data[1], data[2])
 
     def get_resources(self):
         print(self.res)
